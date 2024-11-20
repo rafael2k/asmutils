@@ -25,7 +25,7 @@ OS = LINUX
 # in executable even if it is not present in object file.
 # So, if your ld always adds .bss - you can just forget about it.
 
-KERNEL = 24
+KERNEL = 26
 
 # Optimization method (SIZE/SPEED)
 
@@ -121,7 +121,7 @@ endif
 INSTALLDIR=../bin/$(OS)-$(KERNEL)
 
 LDFLAGS :=
-ASFLAGS := -w+orphan-labels -w+macro-params -i../inc/
+ASFLAGS := -w+orphan-labels -w+macro-params -w-pp-macro-params-legacy -i../inc/
 DEFINES := -D__$(OS)__ -D__KERNEL__=$(KERNEL) -D__SYSCALL__=__S_$(SYSCALL)__\
 	   -D__OPTIMIZE__=__O_$(OPTIMIZE)__ -D__$(EXECUTABLE)__
 
